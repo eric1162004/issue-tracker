@@ -25,5 +25,13 @@ npx prisma migrate dev
 # Data Validation:
 npm i zod@3.22.2
 
+# Radix 
+npm install @radix-ui/themes
+
+get started:
+https://www.radix-ui.com/themes/docs/overview/getting-started
+
+
+
 
 

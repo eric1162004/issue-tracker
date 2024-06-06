@@ -8,7 +8,7 @@ but only on the client side.
 */
 const IssueForm = dynamic(() => import("@/app/issues/_components/issueForm"), {
   ssr: false,
-  loading: () => <IssueFormSkeleton/>,
+  loading: () => <IssueFormSkeleton />,
 });
 
 const NewIssuePage = () => {

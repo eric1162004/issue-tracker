@@ -56,5 +56,26 @@ npm i @hookform/resolvers@3.3.1
 npm i delay
 npm i react-loading-skeleton@3.3.1
 
+## NextJs Caching
+Data Cache 
+- when we use the fetch API
+- stored in the file system
+- permanent until we redeploy
+- disable with fetch('...', {cache:'no-store'})
+- revalidate with fetch('...', {revalidate: 3600})
+
+Full Route Cache (cache on the server)
+- used to store the output of statically rendered routes
+- routes that do not have parameter are considered static route
+
+Router Cache (cache on the client)
+- to store the payload of pages in browser
+- last for a session
+- get refresh on page reload
+- automatically invalidated in 
+  - 5 mins (for static route)
+  - 30 seconds (for dynamic route)
+- Force page refresh by router.refresh()
+
 
 

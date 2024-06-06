@@ -46,4 +46,7 @@ const IssuesPage = async () => {
   );
 };
 
+// This route will be rendered for each user at request time
+export const dynamic = 'force-dynamic';
+
 export default IssuesPage;

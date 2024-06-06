@@ -77,5 +77,17 @@ Router Cache (cache on the client)
   - 30 seconds (for dynamic route)
 - Force page refresh by router.refresh()
 
+## Next Auth
+follow: https://next-auth.js.org/getting-started/example
+
+build auth api route
+https://next-auth.js.org/configuration/initialization#route-handlers-app
+
+Add to .env
+https://next-auth.js.org/getting-started/example#deploying-to-production
+https://next-auth.js.org/configuration/options
+Generate Secret with `openssl rand -base64 32`
+
+
 
 

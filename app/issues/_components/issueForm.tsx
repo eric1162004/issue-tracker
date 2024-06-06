@@ -1,6 +1,6 @@
 "use client";
 
-import createIssueSchema from "@/app/api/issues/createIssueSchema";
+import issueSchema from "@/app/api/issues/issueSchema";
 import ErrorMesssage from "@/app/components/ErrorMesssage";
 import Spinner from "@/app/components/Spinner";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,7 +25,7 @@ const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
 });
 
 // Infer type from the createIssueSchema
-type IssueFormData = z.infer<typeof createIssueSchema>;
+type IssueFormData = z.infer<typeof issueSchema>;
 
 interface Props {
   issue?: Issue; // issue is optional because it's only needed in the edit page
@@ -42,7 +42,7 @@ const IssueForm = ({ issue }: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<IssueFormData>({
-    resolver: zodResolver(createIssueSchema),
+    resolver: zodResolver(issueSchema),
   });
 
   const [error, setError] = useState("");

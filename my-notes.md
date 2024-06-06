@@ -38,6 +38,13 @@ npm install -D postcss-import
 ## React Markdown Editor
 npm install --save react-simplemde-editor easymde
 
+## Forms
+npm i react-hook-form@7.46.1
+
+## 
+npm i axios
+
+
 
 
 

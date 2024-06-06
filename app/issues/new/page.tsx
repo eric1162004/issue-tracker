@@ -1,14 +1,5 @@
 "use client";
 
-/*
-Next.js's dynamic import to ensure that the react-simplemde-editor component 
-is not included on the server side (SSR: Server Side Rendering) but only on the client side. 
-This is important in cases where components are not compatible with server-side rendering.
-*/
-import dynamic from "next/dynamic";
-const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
-  ssr: false,
-});
 import createIssueSchema from "@/app/api/issues/createIssueSchema";
 import ErrorMesssage from "@/app/components/ErrorMesssage";
 import Spinner from "@/app/components/Spinner";
@@ -16,11 +7,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Callout, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { FaExclamationTriangle } from "react-icons/fa";
 import { z } from "zod";
+
+/*
+react-simplemde-editor is a client component. Below we use Next.js's dynamic import 
+to ensure that the component is not included on the server side (SSR: Server Side Rendering) 
+but only on the client side.
+*/
+const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
+  ssr: false,
+});
 
 // Infer type from the createIssueSchema
 type IssueForm = z.infer<typeof createIssueSchema>;

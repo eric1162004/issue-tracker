@@ -44,6 +44,8 @@ npm i react-hook-form@7.46.1
 ## API Client
 npm i axios
 
+## Client Form validation
+npm i @hookform/resolvers@3.3.1
 
 
 

@@ -9,17 +9,18 @@ import dynamic from "next/dynamic";
 const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
-import { Button, Callout, Text, TextField } from "@radix-ui/themes";
+import createIssueSchema from "@/app/api/issues/createIssueSchema";
+import ErrorMesssage from "@/app/components/ErrorMesssage";
+import Spinner from "@/app/components/Spinner";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, Callout, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { FaExclamationTriangle } from "react-icons/fa";
-import { zodResolver } from "@hookform/resolvers/zod";
-import createIssueSchema from "@/app/api/issues/createIssueSchema";
 import { z } from "zod";
-import ErrorMesssage from "@/app/components/ErrorMesssage";
 
 // Infer type from the createIssueSchema
 type IssueForm = z.infer<typeof createIssueSchema>;
@@ -38,6 +39,7 @@ const NewIssuePage = () => {
   });
 
   const [error, setError] = useState("");
+  const [isSubmitting, setSubmitting] = useState(false);
 
   return (
     <div className="max-w-xl">
@@ -55,10 +57,13 @@ const NewIssuePage = () => {
         className="space-y-3"
         onSubmit={handleSubmit(async (data) => {
           try {
+            setSubmitting(true);
             await axios.post("/api/issues", data);
             router.push("/issues");
           } catch (error) {
             setError("An unexpected error occurred.");
+          } finally {
+            setSubmitting(false);
           }
         })}
       >
@@ -80,7 +85,9 @@ const NewIssuePage = () => {
         />
         <ErrorMesssage>{errors.description?.message}</ErrorMesssage>
 
-        <Button>Submit new issue</Button>
+        <Button disabled={isSubmitting}>
+          Submit new issue {isSubmitting && <Spinner />}
+        </Button>
       </form>
     </div>
   );

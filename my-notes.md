@@ -47,6 +47,9 @@ npm i axios
 ## Client Form validation
 npm i @hookform/resolvers@3.3.1
 
+## Skeletons
+npm i delay
+npm i react-loading-skeleton@3.3.1
 
 
 

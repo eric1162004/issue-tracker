@@ -38,6 +38,10 @@ npm install -D postcss-import
 ## React Markdown Editor
 npm install --save react-simplemde-editor easymde
 
+## To View Markdown
+npm i react-markdown@8.0.7
+npm install -D @tailwindcss/typography
+
 ## Forms
 npm i react-hook-form@7.46.1
 

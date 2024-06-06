@@ -19,6 +19,7 @@ import { FaExclamationTriangle } from "react-icons/fa";
 import { zodResolver } from "@hookform/resolvers/zod";
 import createIssueSchema from "@/app/api/issues/createIssueSchema";
 import { z } from "zod";
+import ErrorMesssage from "@/app/components/ErrorMesssage";
 
 // Infer type from the createIssueSchema
 type IssueForm = z.infer<typeof createIssueSchema>;
@@ -64,11 +65,7 @@ const NewIssuePage = () => {
         <TextField.Root>
           <TextField.Input placeholder="Title" {...register("title")} />
         </TextField.Root>
-        {errors.title && (
-          <Text color="red" as="p">
-            {errors.title.message}
-          </Text>
-        )}
+        <ErrorMesssage>{errors.title?.message}</ErrorMesssage>
 
         <Controller
           name="description"
@@ -81,11 +78,7 @@ const NewIssuePage = () => {
             />
           )}
         />
-        {errors.description && (
-          <Text color="red" as="p">
-            {errors.description.message}
-          </Text>
-        )}
+        <ErrorMesssage>{errors.description?.message}</ErrorMesssage>
 
         <Button>Submit new issue</Button>
       </form>

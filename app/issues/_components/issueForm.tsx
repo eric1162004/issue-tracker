@@ -8,21 +8,12 @@ import { Issue } from "@prisma/client";
 import { Button, Callout, TextField } from "@radix-ui/themes";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { FaExclamationTriangle } from "react-icons/fa";
+import SimpleMDE from "react-simplemde-editor";
 import { z } from "zod";
-
-/*
-react-simplemde-editor is a client component. Below we use Next.js's dynamic import 
-to ensure that the component is not included on the server side (SSR: Server Side Rendering) 
-but only on the client side.
-*/
-const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
-  ssr: false,
-});
 
 // Infer type from the createIssueSchema
 type IssueFormData = z.infer<typeof issueSchema>;

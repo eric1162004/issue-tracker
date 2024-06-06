@@ -31,6 +31,12 @@ npm install @radix-ui/themes
 get started:
 https://www.radix-ui.com/themes/docs/overview/getting-started
 
+## Using Custom Font
+See https://tailwindcss.com/docs/using-with-preprocessors
+npm install -D postcss-import
+
+## React Markdown Editor
+npm install --save react-simplemde-editor easymde
 
 
 

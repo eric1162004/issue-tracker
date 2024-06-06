@@ -1,11 +1,14 @@
-import "./globals.css";
-import "@radix-ui/themes/styles.css";
+import "./css/globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
 import NavBar from "./NavBar";
 import { Theme } from "@radix-ui/themes";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-roboto",
+  weight: ["100", "400", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={roboto.variable}>
         <Theme>
           <NavBar />
           <main className="p-5">{children}</main>

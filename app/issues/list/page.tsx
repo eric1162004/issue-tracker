@@ -1,7 +1,7 @@
 import prisma from "@/prisma/client";
 import { Table } from "@radix-ui/themes";
 import IssueActions from "./IssueActions";
-import { IssueStatusBadge, Link } from "../components";
+import { IssueStatusBadge, Link } from "../../components";
 
 const IssuesPage = async () => {
   const issues = await prisma.issue.findMany();
@@ -25,9 +25,7 @@ const IssuesPage = async () => {
           {issues.map((issue) => (
             <Table.Row key={issue.id}>
               <Table.Cell>
-                <Link href={`/issues/${issue.id}`}>
-                {issue.title}
-                </Link>
+                <Link href={`/issues/${issue.id}`}>{issue.title}</Link>
                 <div className="block md:hidden">
                   <IssueStatusBadge status={issue.status} />
                 </div>
@@ -47,6 +45,6 @@ const IssuesPage = async () => {
 };
 
 // This route will be rendered for each user at request time
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default IssuesPage;

@@ -2,8 +2,9 @@
 npx create-next-app@13.4.19
 npm run dev
 
-# React Icons
+# Icons
 npm install react-icons --save
+npm i @radix-ui/react-icons
 
 # Classnames
 npm install classnames@2.3.2

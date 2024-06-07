@@ -119,6 +119,10 @@ add middleware.ts
 
 ## React Query
 npm i @tanstack/react-query@4.35.3
+why using it?
+- Automatic Caching
+- Simplified Async Data Fetching. skipping useEffect and useState
+- Simplified Error Handling
 
 
 

@@ -1,27 +1,32 @@
 "use client"; // Select is a client side component
 
-import { User } from "@prisma/client";
 /*
 Since this is a client component, 
 we dont have access to prisma (which is only available in the server side).
 Instead to fetch user via an user api route.
 */
 
+import { User } from "@prisma/client";
 import { Select } from "@radix-ui/themes";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import Skeleton from '@/app/components/Skeleton'
 
 const AssigneeSelect = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  const {
+    data: users,
+    error,
+    isLoading,
+  } = useQuery<User[]>({
+    queryKey: ["users"],
+    queryFn: () => axios.get("/api/users").then((res) => res.data),
+    staleTime: 60 * 1000, // 60s
+    retry: 3,
+  });
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const { data } = await axios.get<User[]>("/api/users");
-      setUsers(data);
-    };
-    
-    fetchUsers();
-  }, []);
+  if (isLoading) return <Skeleton/>;
+
+  if (error) return null;
 
   return (
     <Select.Root>
@@ -29,7 +34,7 @@ const AssigneeSelect = () => {
       <Select.Content position="popper">
         <Select.Group>
           <Select.Label>Suggestions</Select.Label>
-          {users.map((user) => (
+          {users?.map((user) => (
             <Select.Item key={user.id} value={user.id}>
               {user.name}
             </Select.Item>

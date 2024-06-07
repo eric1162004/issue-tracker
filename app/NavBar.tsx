@@ -83,8 +83,6 @@ const AuthStatus = () => {
             size={"2"}
             radius="medium"
             className="cursor-pointer"
-            // Use this instructs the browser to completely omit the Referrer header in cross-origin requests
-            // referrerPolicy="no-referrer" 
           />
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>

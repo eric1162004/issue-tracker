@@ -133,3 +133,6 @@ npm install recharts
 ## Remove .env
 use the script git-filter-repo.py
 `python3 git-filter-repo.py --path .env --invert-paths --force`
+
+## Error Tracking Tools
+Sentry, BugSnag or LockRocket

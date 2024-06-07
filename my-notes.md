@@ -117,6 +117,9 @@ To pass session detail down the component tree
 ## Protecting Routes
 add middleware.ts
 
+## React Query
+npm i @tanstack/react-query@4.35.3
+
 
 
 

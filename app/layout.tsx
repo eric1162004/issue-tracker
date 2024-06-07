@@ -4,6 +4,7 @@ import { Roboto_Mono } from "next/font/google";
 import NavBar from "./NavBar";
 import { Container, Theme } from "@radix-ui/themes";
 import AuthProvider from "./auth/AuthProvider";
+import QueryClientProvider from "./QueryClientProvider";
 
 const roboto = Roboto_Mono({
   subsets: ["latin"],
@@ -24,17 +25,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* Provider OAuth Context */}
-      <AuthProvider>
-        <body className={roboto.variable}>
-          <Theme>
-            <NavBar />
-            <main className="p-5">
-              {/* Container constrains the maximum width of page content. Set size to 1,2,3 or 4 */}
-              <Container>{children}</Container>
-            </main>
-          </Theme>
-        </body>
-      </AuthProvider>
+      <QueryClientProvider>
+        <AuthProvider>
+          <body className={roboto.variable}>
+            <Theme>
+              <NavBar />
+              <main className="p-5">
+                {/* Container constrains the maximum width of page content. Set size to 1,2,3 or 4 */}
+                <Container>{children}</Container>
+              </main>
+            </Theme>
+          </body>
+        </AuthProvider>
+      </QueryClientProvider>
     </html>
   );
 }

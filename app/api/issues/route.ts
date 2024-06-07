@@ -1,8 +1,8 @@
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import issueSchema from "./issueSchema";
 import authOptions from "@/app/auth/authOptions";
 import { getServerSession } from "next-auth";
+import { issueSchema } from "./issueSchema";
 
 export async function POST(request: NextRequest) {
   // Allow authenticated users only

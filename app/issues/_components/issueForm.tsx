@@ -1,6 +1,6 @@
 "use client";
 
-import issueSchema from "@/app/api/issues/issueSchema";
+import { issueSchema } from "@/app/api/issues/issueSchema";
 import ErrorMesssage from "@/app/components/ErrorMesssage";
 import Spinner from "@/app/components/Spinner";
 import { zodResolver } from "@hookform/resolvers/zod";

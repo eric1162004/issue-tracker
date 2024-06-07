@@ -124,8 +124,7 @@ why using it?
 - Simplified Async Data Fetching. skipping useEffect and useState
 - Simplified Error Handling
 
-
-
-
+## React-hot-toast
+npm i react-hot-toast@2.4.1
 
 

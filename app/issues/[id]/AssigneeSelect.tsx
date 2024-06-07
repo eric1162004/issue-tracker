@@ -11,6 +11,7 @@ import { Select } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Skeleton from "@/app/components/Skeleton";
+import toast, { Toaster } from "react-hot-toast";
 
 const AssigneeSelect = ({ issue }: { issue: Issue }) => {
   const {
@@ -36,31 +37,37 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
   if (error) return null;
 
   return (
-    <Select.Root
-      defaultValue={cachedIssue?.assignedToUserId || ""}
-      onValueChange={(userId) => {
-        axios
-          .patch("/api/issues/" + cachedIssue?.id, {
-            assignedToUserId: userId || null, // null = unassigned
-          })
-          .then(() => {
-            refetch();  // refetch issue on assignee selection
-          });
-      }}
-    >
-      <Select.Trigger placeholder="Assign to" variant="soft" />
-      <Select.Content position="popper">
-        <Select.Group>
-          <Select.Label>Suggestions</Select.Label>
-          <Select.Item value={null!}>Unassigned</Select.Item>
-          {users?.map((user) => (
-            <Select.Item key={user.id} value={user.id}>
-              {user.name}
-            </Select.Item>
-          ))}
-        </Select.Group>
-      </Select.Content>
-    </Select.Root>
+    <>
+      <Select.Root
+        defaultValue={cachedIssue?.assignedToUserId || ""}
+        onValueChange={(userId) => {
+          axios
+            .patch("/api/issues/" + cachedIssue?.id, {
+              assignedToUserId: userId || null, // null = unassigned
+            })
+            .then(() => {
+              refetch(); // refetch issue on assignee selection
+            })
+            .catch(() => {
+              toast.error("Changes could not be saved.");
+            });
+        }}
+      >
+        <Select.Trigger placeholder="Assign to" variant="soft" />
+        <Select.Content position="popper">
+          <Select.Group>
+            <Select.Label>Suggestions</Select.Label>
+            <Select.Item value={null!}>Unassigned</Select.Item>
+            {users?.map((user) => (
+              <Select.Item key={user.id} value={user.id}>
+                {user.name}
+              </Select.Item>
+            ))}
+          </Select.Group>
+        </Select.Content>
+      </Select.Root>
+      <Toaster />
+    </>
   );
 };
 

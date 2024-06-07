@@ -78,18 +78,17 @@ Router Cache (cache on the client)
 - Force page refresh by router.refresh()
 
 ## Next Auth
-### npm install
-https://next-auth.js.org/getting-started/example
+follow: https://next-auth.js.org/getting-started/example
 
-## build auth api route
+build auth api route
 https://next-auth.js.org/configuration/initialization#route-handlers-app
 
-### add .env variables
+Add to .env
 https://next-auth.js.org/getting-started/example#deploying-to-production
 https://next-auth.js.org/configuration/options
 Generate Secret with `openssl rand -base64 32`
 
-### set up google provider
+set up google api
 go to google cloud
 create a new project
 go to https://console.developers.google.com/apis/credentials

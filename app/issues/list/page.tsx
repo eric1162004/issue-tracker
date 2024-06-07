@@ -17,7 +17,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
     { label: "Created", value: "createdAt", className: "hidden md:table-cell" },
   ];
 
-  // validate status from the search params
+  // validate status from the searchParams
   const statuses = Object.values(Status);
   const status = statuses.includes(searchParams.status)
     ? searchParams.status

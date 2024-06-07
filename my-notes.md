@@ -78,18 +78,17 @@ Router Cache (cache on the client)
 - Force page refresh by router.refresh()
 
 ## Next Auth
-### npm install
-https://next-auth.js.org/getting-started/example
+follow: https://next-auth.js.org/getting-started/example
 
-## build auth api route
+build auth api route
 https://next-auth.js.org/configuration/initialization#route-handlers-app
 
-### add .env variables
+Add to .env
 https://next-auth.js.org/getting-started/example#deploying-to-production
 https://next-auth.js.org/configuration/options
 Generate Secret with `openssl rand -base64 32`
 
-### set up google provider
+set up google api
 go to google cloud
 create a new project
 go to https://console.developers.google.com/apis/credentials
@@ -99,17 +98,6 @@ create OAuth client ID
   Authorised redirect URIs: (see https://next-auth.js.org/providers/google#configuration)
 store your google client ID and secret in .env
 add google providers: https://next-auth.js.org/providers/google#example
-set session strategy to jwt in the NextAuth options
-
-## set up adaptors
-follow https://authjs.dev/getting-started/adapters/prisma
-BUT instead install:
-`npm install @next-auth/prisma-adapter@1.0.7`
-add prisma as adaptor in auth.ts
-add schema
-migrate schema
-
-
 
 
 

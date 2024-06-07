@@ -130,4 +130,6 @@ npm i react-hot-toast@2.4.1
 ## Racharts
 npm install recharts
 
-
+## Remove .env
+use the script git-filter-repo.py
+`python3 git-filter-repo.py --path .env --invert-paths --force`

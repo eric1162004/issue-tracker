@@ -4,6 +4,20 @@ import authOptions from "@/app/auth/authOptions";
 import { getServerSession } from "next-auth";
 import { patchIssueSchema } from "../issueSchema";
 
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  // validate if the issue exists
+  const issue = await prisma.issue.findUnique({
+    where: { id: parseInt(params.id) },
+  });
+  if (!issue)
+    return NextResponse.json({ error: "Invalid issue" }, { status: 404 });
+
+  return NextResponse.json(issue);
+}
+
 export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }

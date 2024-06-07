@@ -88,6 +88,18 @@ https://next-auth.js.org/getting-started/example#deploying-to-production
 https://next-auth.js.org/configuration/options
 Generate Secret with `openssl rand -base64 32`
 
+set up google api
+go to google cloud
+create a new project
+go to https://console.developers.google.com/apis/credentials
+configurate OAuth consent screen
+create OAuth client ID
+  Authorised JavaScript origins: http://localhost:3000
+  Authorised redirect URIs: (see https://next-auth.js.org/providers/google#configuration)
+store your google client ID and secret in .env
+add google providers: https://next-auth.js.org/providers/google#example
+
+
 
 
 

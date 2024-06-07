@@ -28,6 +28,8 @@ npm i zod@3.22.2
 
 # Radix 
 npm install @radix-ui/themes
+"@radix-ui/themes": "^1.1.2", (old version)
+"@radix-ui/themes": "^2.0.3", (to fix the select component placeholder issue)
 
 get started:
 https://www.radix-ui.com/themes/docs/overview/getting-started

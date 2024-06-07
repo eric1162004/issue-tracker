@@ -127,4 +127,7 @@ why using it?
 ## React-hot-toast
 npm i react-hot-toast@2.4.1
 
+## Racharts
+npm install recharts
+
 

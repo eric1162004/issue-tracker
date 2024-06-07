@@ -110,6 +110,10 @@ add schema
 migrate schema
 
 
+## Add session provider
+To pass session detail down the component tree
+
+
 
 
 

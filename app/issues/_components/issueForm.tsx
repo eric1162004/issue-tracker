@@ -26,14 +26,17 @@ const IssueForm = ({ issue }: Props) => {
   // Redirect user back to Issues page
   const router = useRouter();
 
-  // A resolver is required to integrate React Form with Zod
   const {
     register,
     control,
     handleSubmit,
     formState: { errors },
   } = useForm<IssueFormData>({
-    resolver: zodResolver(issueSchema),
+    resolver: zodResolver(issueSchema), // A resolver is required to integrate React Form with Zod
+    defaultValues: {
+      title: issue?.title || "",
+      description: issue?.description || "",
+    },
   });
 
   const [error, setError] = useState("");
@@ -84,7 +87,7 @@ const IssueForm = ({ issue }: Props) => {
           render={({ field }) => (
             <SimpleMDE
               placeholder="Description"
-              value={issue?.description}
+              value={field.value}
               onChange={field.onChange}
             />
           )}

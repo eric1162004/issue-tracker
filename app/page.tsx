@@ -3,6 +3,7 @@ import { Flex, Grid } from "@radix-ui/themes";
 import IssueChart from "./IssueChart";
 import IssueSummary from "./IssueSummary";
 import LatestIssues from "./LatestIssues";
+import { Metadata } from "next";
 
 export default async function Home({
   searchParams,
@@ -32,4 +33,9 @@ export default async function Home({
       <LatestIssues />
     </Grid>
   );
+}
+
+export const metadata: Metadata = {
+  title: 'Issue Tracker - Dashboard',
+  description: 'View a summary of project issues'
 }

@@ -136,3 +136,11 @@ use the script git-filter-repo.py
 
 ## Error Tracking Tools
 Sentry, BugSnag or LockRocket
+
+## Deployment
+regenerate prisma client on every build
+this is needed because vercel cache dependencies on deployment
+`prisma generate && prisma migrate deploy && next build`
+
+create a mysql db in AWS RDS
+remember to allow the inbound security rule to allow connection to the db instance
